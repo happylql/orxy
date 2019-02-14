@@ -1,4 +1,5 @@
 const pkg = require('./package')
+const { resolve } = require('path')
 
 
 module.exports = {
@@ -22,20 +23,27 @@ module.exports = {
   /*
   ** Customize the progress-bar color
   */
-  loading: { color: '#fff' },
+  loading: { color: 'cyan' },
+
+  router: {
+    middleware: 'i18n'
+  },
 
   /*
   ** Global CSS
   */
   css: [
-    'element-ui/lib/theme-chalk/index.css'
+    'element-ui/lib/theme-chalk/index.css',
+    '~/assets/css/main.css'
   ],
 
   /*
   ** Plugins to load before mounting the App
   */
   plugins: [
-    '@/plugins/element-ui'
+    '~/plugins/element-ui',
+    '~/plugins/i18n.js',
+    '~/plugins/svg-icon'
   ],
 
   /*
@@ -57,12 +65,27 @@ module.exports = {
   */
   build: {
     transpile: [/^element-ui/],
-    
+    vendor: ['vue-i18n'],
+
     /*
     ** You can extend webpack config here
     */
     extend(config, ctx) {
-      
+      const svgRule = config.module.rules.find(rule => rule.test.test('.svg'))
+      svgRule.exclude = [resolve(__dirname, 'assets/icons/svg')]
+      // Includes /assets/svg for svg-sprite-loader
+      config.module.rules.push({
+        test: /\.svg$/,
+        include: [resolve(__dirname, 'assets/icons/svg')],
+        loader: 'svg-sprite-loader',
+        options: {
+          symbolId: 'icon-[name]'
+        }
+      })
     }
+  },
+
+  generate: {
+    routes: ['/', '/zh']
   }
 }
