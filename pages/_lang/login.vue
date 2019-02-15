@@ -54,10 +54,10 @@
 </template>
 
 <script>
-import LangSelect from "@/components/LangSelect";
+import LangSelect from "~/components/LangSelect";
 
 export default {
-  name: "login",
+  name: "Login",
   components: { LangSelect },
   layout: "blank",
   data() {
@@ -123,5 +123,5 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import "@/assets/css/login/index.scss";
+@import "~/assets/css/login/index.scss";
 </style>

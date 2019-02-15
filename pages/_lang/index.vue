@@ -1,17 +1,33 @@
 <template>
-  <div>
-    <el-row>
-      <el-col span="5"></el-col>
-      <el-col span="19"></el-col>
-    </el-row>
+  <div class="dashboard-container">
+    <component :is="currentDashboard"/>
   </div>
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+import adminDashboard from "~/components/Home/editor"; // TODO: 暂时只用编辑角色
+// import adminDashboard from "~/components/Dashboard/admin";
+import editorDashboard from "~/components/Home/editor";
+
 export default {
-  components: {}
+  name: "Home",
+  components: { adminDashboard, editorDashboard },
+  data() {
+    return { currentRole: "admin" };
+  },
+  computed: {
+    ...mapGetters(["roles"]),
+    currentDashboard() {
+      return this.currentRole + "Dashboard";
+    }
+  },
+  created() {
+    if (!this.roles.includes("admin")) {
+      this.currentRole = "editor";
+    }
+  }
 };
 </script>
-
 <style scoped lang="scss">
 </style>
