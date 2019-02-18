@@ -1,9 +1,12 @@
 const pkg = require('./package')
 const { resolve } = require('path')
 
-
 module.exports = {
   mode: 'universal',
+  srcDir: 'client/',
+  buildDir: 'dist/client/',
+  rootDir: './',
+  dev: (process.env.NODE_ENV !== 'production'),
 
   /*
   ** Headers of the page
@@ -34,7 +37,7 @@ module.exports = {
   */
   css: [
     'element-ui/lib/theme-chalk/index.css',
-    '~/assets/css/main.scss'
+    { src: '~/assets/css/main.scss', lang: 'scss' }
   ],
 
   /*
@@ -72,11 +75,12 @@ module.exports = {
     */
     extend(config, ctx) {
       const svgRule = config.module.rules.find(rule => rule.test.test('.svg'))
-      svgRule.exclude = [resolve(__dirname, 'assets/icons/svg')]
+      svgRule.exclude = [resolve(__dirname, 'client/assets/icons/svg')]
+
       // Includes /assets/svg for svg-sprite-loader
       config.module.rules.push({
         test: /\.svg$/,
-        include: [resolve(__dirname, 'assets/icons/svg')],
+        include: [resolve(__dirname, 'client/assets/icons/svg')],
         loader: 'svg-sprite-loader',
         options: {
           symbolId: 'icon-[name]'

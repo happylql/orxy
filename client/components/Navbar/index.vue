@@ -40,10 +40,10 @@ export default {
   },
   methods: {
     toggleSideBar() {
-      this.$store.dispatch("ToggleSideBar");
+      this.$store.dispatch("app/toggleSideBar");
     },
     logout() {
-      this.$store.dispatch("LogOut").then(() => {
+      this.$store.dispatch("user/logOut").then(() => {
         location.reload(); // In order to re-instantiate the vue-router object to avoid bugs
       });
     }

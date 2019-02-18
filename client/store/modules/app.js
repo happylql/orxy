@@ -39,16 +39,16 @@ const mutations = {
 }
 
 const actions = {
-  ToggleSideBar({ commit }) {
+  toggleSideBar({ commit }) {
     commit('TOGGLE_SIDEBAR')
   },
-  CloseSideBar({ commit }, { withoutAnimation }) {
+  closeSideBar({ commit }, { withoutAnimation }) {
     commit('CLOSE_SIDEBAR', withoutAnimation)
   },
-  SetSize({ commit }, size) {
+  setSize({ commit }, size) {
     commit('SET_SIZE', size)
   },
-  SetLanguage({ commit }, locale) {
+  setLanguage({ commit }, locale) {
     commit('SET_LANGUAGE', locale);
   }
 }

@@ -3,8 +3,8 @@ import { getToken, setToken, removeToken } from '../../utils/auth'
 
 const state = () => ({
   token: getToken(),
-  name: '',
-  avatar: '',
+  name: 'Hello',
+  avatar: 'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif',
   introduction: '',
   roles: [] // 权限
 })
@@ -27,7 +27,7 @@ const mutations = {
 
 const actions = {
   // 用户名登录
-  LoginByUsername({ commit }, userInfo) {
+  loginByUsername({ commit }, userInfo) {
     const username = userInfo.username.trim();
     return new Promise((resolve, reject) => {
       loginByUsername(username, userInfo.password).then(res => {
@@ -42,7 +42,7 @@ const actions = {
   },
 
   // 获取用户信息
-  GetUserInfo({ commit, state }) {
+  getUserInfo({ commit, state }) {
     return new Promise((resolve, reject) => {
       getUserInfo(state.token).then(res => {
         const data = res.data;
@@ -67,7 +67,7 @@ const actions = {
   },
 
   // 登出
-  Logout({ commit, state }) {
+  logout({ commit, state }) {
     return new Promise((resolve, reject) => {
       logout(state.token).then(() => {
         commit('SET_TOKEN', '');
@@ -81,7 +81,7 @@ const actions = {
   },
 
   // 前端登出
-  FedLogout({ commit }) {
+  fedLogout({ commit }) {
     return new promise(resolve => {
       commit('SET_TOKEN', '');
       removeToken();
@@ -90,7 +90,7 @@ const actions = {
   },
 
   // 动态修改权限
-  ChangeRoles({ commit, dispatch }, role) {
+  changeRoles({ commit, dispatch }, role) {
     return new Promise(resolve => {
       commit('SET_TOKEN', role);
       setToken(role);
@@ -100,7 +100,8 @@ const actions = {
         commit('SET_NAME', data.name);
         commit('SET_AVATAR', data.avatar);
         commit('SET_INTRODUCTION', data.introduction);
-        dispatch('GenerateRoutes', data) // 动态修改权限后 重绘侧边菜单
+        // TODO: 动态修改权限后 重绘侧边菜单
+        // dispatch('generateRoutes', data)
         resolve();
       })
     });

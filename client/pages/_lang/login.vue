@@ -104,7 +104,7 @@ export default {
         if (valid) {
           this.loading = true;
           this.$store
-            .dispatch("LoginByUserName", this.loginForm)
+            .dispatch("user/loginByUserName", this.loginForm)
             .then(() => {
               this.loading = false;
               this.$router.push({ path: this.redirect || "/" });

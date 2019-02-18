@@ -3,8 +3,7 @@
     <sidebar class="sidebar-container"/>
     <div class="main-container">
       <navbar/>
-      <!-- <tags-view/> -->
-      <AppMain/>
+      <app-main/>
     </div>
   </div>
 </template>
@@ -19,7 +18,18 @@ export default {
     Navbar,
     Sidebar,
     AppMain
-    // TagsView
+  },
+  computed: {
+    sidebar() {
+      return this.$store.state.app.sidebar;
+    },
+    classObj() {
+      return {
+        hideSidebar: !this.sidebar.opened,
+        openSidebar: this.sidebar.opened,
+        withoutAnimation: this.sidebar.withoutAnimation
+      };
+    }
   }
 };
 </script>

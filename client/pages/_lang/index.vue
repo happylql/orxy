@@ -13,6 +13,18 @@ import editorDashboard from "~/components/Home/editor";
 export default {
   name: "Home",
   components: { adminDashboard, editorDashboard },
+  head() {
+    return {
+      title: "首页",
+      meta: [
+        {
+          hid: "home custom title",
+          name: "home",
+          content: "home custom title description"
+        }
+      ]
+    };
+  },
   data() {
     return { currentRole: "admin" };
   },
