@@ -101,7 +101,7 @@ const actions = {
         commit('SET_AVATAR', data.avatar);
         commit('SET_INTRODUCTION', data.introduction);
         // TODO: 动态修改权限后 重绘侧边菜单
-        // dispatch('generateRoutes', data)
+        dispatch('promission/generateRoutes', data)
         resolve();
       })
     });

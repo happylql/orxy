@@ -16,7 +16,7 @@
         </div>
         <el-dropdown-menu slot="dropdown">
           <el-dropdown-item>
-            <span style="display:block;" @click="logout">{{ $t('navbar.logOut') }}</span>
+            <span style="display:block;" @click="logout">{{ $t('navbar.logout') }}</span>
           </el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>
@@ -43,7 +43,7 @@ export default {
       this.$store.dispatch("app/toggleSideBar");
     },
     logout() {
-      this.$store.dispatch("user/logOut").then(() => {
+      this.$store.dispatch("user/logout").then(() => {
         location.reload(); // In order to re-instantiate the vue-router object to avoid bugs
       });
     }
