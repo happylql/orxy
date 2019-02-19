@@ -3,11 +3,11 @@ import CryptoJs from 'crypto-js'
 
 export function loginByUsername(username, password) {
   const data = {
-    username,
+    username: window.encodeURIComponent(username),
     password: CryptoJS.MD5(password).toString()
   }
   return request({
-    url: '/login/login',
+    url: '/user/signin',
     method: 'post',
     data
   })
@@ -15,15 +15,14 @@ export function loginByUsername(username, password) {
 
 export function logout() {
   return request({
-    url: '/login/logout',
-    method: 'post'
+    url: '/user/exit',
+    method: 'get'
   })
 }
 
-export function getUserInfo(token) {
+export function getUserInfo() {
   return request({
     url: '/user/info',
-    method: 'get',
-    params: { token }
+    method: 'get'
   })
 }

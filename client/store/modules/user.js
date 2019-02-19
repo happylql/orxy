@@ -1,8 +1,6 @@
 import { loginByUsername, logout, getUserInfo } from '../../api/login'
-import { getToken, setToken, removeToken } from '../../utils/auth'
 
 const state = () => ({
-  token: getToken(),
   name: 'Hello',
   avatar: 'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif',
   introduction: '',
@@ -10,9 +8,6 @@ const state = () => ({
 })
 
 const mutations = {
-  SET_TOKEN: (state, token) => {
-    state.token = token;
-  },
   SET_NAME: (state, name) => {
     state.name = name
   },
@@ -32,8 +27,6 @@ const actions = {
     return new Promise((resolve, reject) => {
       loginByUsername(username, userInfo.password).then(res => {
         const data = res.data;
-        commit('SET_TOKEN', data.token);
-        setToken(data.token);
         resolve();
       }).catch(err => {
         reject(err)
@@ -44,7 +37,7 @@ const actions = {
   // 获取用户信息
   getUserInfo({ commit, state }) {
     return new Promise((resolve, reject) => {
-      getUserInfo(state.token).then(res => {
+      getUserInfo().then(res => {
         const data = res.data;
         if (!data) {
           reject('Verification failed, please login again.');
@@ -69,10 +62,8 @@ const actions = {
   // 登出
   logout({ commit, state }) {
     return new Promise((resolve, reject) => {
-      logout(state.token).then(() => {
-        commit('SET_TOKEN', '');
+      logout().then(() => {
         commit('SET_ROLES', []);
-        removeToken();
         resolve();
       }).catch(err => {
         reject(err)
@@ -80,20 +71,9 @@ const actions = {
     });
   },
 
-  // 前端登出
-  fedLogout({ commit }) {
-    return new promise(resolve => {
-      commit('SET_TOKEN', '');
-      removeToken();
-      resolve();
-    })
-  },
-
   // 动态修改权限
   changeRoles({ commit, dispatch }, role) {
     return new Promise(resolve => {
-      commit('SET_TOKEN', role);
-      setToken(role);
       getUserInfo(role).then(res => {
         const data = res.data;
         commit('SET_ROLES', data.roles);
