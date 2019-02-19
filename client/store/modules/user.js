@@ -17,7 +17,6 @@ const mutations = {
   SET_ROLES: (state, roles) => {
     state.roles = roles
   }
-
 }
 
 const actions = {
@@ -74,7 +73,7 @@ const actions = {
   // 动态修改权限
   changeRoles({ commit, dispatch }, role) {
     return new Promise(resolve => {
-      getUserInfo(role).then(res => {
+      getUserInfo().then(res => {
         const data = res.data;
         commit('SET_ROLES', data.roles);
         commit('SET_NAME', data.name);
