@@ -22,7 +22,7 @@
 <script>
 import { mapGetters } from "vuex";
 import SidebarItem from "./SidebarItem";
-import variables from "@/assets/css/variables.scss";
+import variables from "@/assets/styles/variables.scss";
 
 export default {
   components: { SidebarItem },
