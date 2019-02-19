@@ -1,5 +1,5 @@
-const Koa = require('koa')
-const consola = require('consola')
+import Koa from 'koa'
+import consola from 'consola'
 const { Nuxt, Builder } = require('nuxt')
 
 import mongoose from 'mongoose'
@@ -12,6 +12,9 @@ import Passport from './utils/passport'
 import user from './router/user'
 
 const app = new Koa()
+const host = process.env.HOST || '127.0.0.1'
+const port = process.env.PORT || 3000
+
 app.keys = ['gm', 'keyskeys'];
 app.proxy = true;
 app.use(session({
@@ -35,11 +38,6 @@ nuxtConfig.dev = !(app.env === 'production')
 async function start() {
   // Instantiate nuxt.js
   const nuxt = new Nuxt(nuxtConfig)
-
-  const {
-    host = process.env.HOST || '127.0.0.1',
-    port = process.env.PORT || 3000
-  } = nuxt.options.server
 
   // Build in development
   if (nuxtConfig.dev) {

@@ -1,6 +1,6 @@
 import Passport from 'koa-passport'
 import LocalStrategy from 'passport-local'
-import UserModel from '../models/users'
+import UserModel from '../models/user'
 
 Passport.use(new LocalStrategy(async function (username, password, done) {
   let where = {
