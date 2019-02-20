@@ -1,4 +1,3 @@
-import request from '../utils/request'
 import CryptoJs from 'crypto-js'
 
 export function loginByUsername(username, password) {
@@ -6,23 +5,23 @@ export function loginByUsername(username, password) {
     username: window.encodeURIComponent(username),
     password: CryptoJS.MD5(password).toString()
   }
-  return request({
+  return {
     url: '/user/signin',
     method: 'post',
     data
-  })
+  }
 }
 
 export function logout() {
-  return request({
+  return {
     url: '/user/exit',
     method: 'get'
-  })
+  }
 }
 
 export function getUserInfo() {
-  return request({
+  return {
     url: '/user/info',
     method: 'get'
-  })
+  }
 }

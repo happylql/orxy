@@ -24,7 +24,7 @@ const actions = {
   loginByUsername({ commit }, userInfo) {
     const username = userInfo.username.trim();
     return new Promise((resolve, reject) => {
-      loginByUsername(username, userInfo.password).then(res => {
+      this.$axios(loginByUsername(username, userInfo.password)).then(res => {
         const data = res.data;
         resolve();
       }).catch(err => {
@@ -36,7 +36,7 @@ const actions = {
   // 获取用户信息
   getUserInfo({ commit, state }) {
     return new Promise((resolve, reject) => {
-      getUserInfo().then(res => {
+      this.$axios(getUserInfo()).then(res => {
         const data = res.data;
         if (!data) {
           reject('Verification failed, please login again.');
@@ -61,7 +61,7 @@ const actions = {
   // 登出
   logout({ commit, state }) {
     return new Promise((resolve, reject) => {
-      logout().then(() => {
+      this.$axios(logout()).then(() => {
         commit('SET_ROLES', []);
         resolve();
       }).catch(err => {
