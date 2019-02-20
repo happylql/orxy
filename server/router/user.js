@@ -177,13 +177,14 @@ router.get('/exit', async (ctx, next) => {
 router.get('/info', async (ctx) => {
   if (ctx.isAuthenticated()) {
     const { username, email } = ctx.session.passport.user;
+    // TODO: roles 权限
     ctx.body = {
-      user: username,
+      name: username,
       email
     }
   } else {
     ctx.body = {
-      user: '',
+      name: '',
       email: ''
     }
   }

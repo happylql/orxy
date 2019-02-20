@@ -17,6 +17,7 @@ import Sidebar from "~/components/Sidebar";
 import AppMain from "~/components/AppMain";
 
 export default {
+  middleware: "check-auth",
   components: {
     Navbar,
     Sidebar,

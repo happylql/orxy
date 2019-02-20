@@ -16,7 +16,11 @@ const store = () => new Vuex.Store({
   },
   getters,
   actions: {
-    async nuxtServerInit({ commit }, { req, app }) {
+    async nuxtServerInit({ commit, dispatch }, { req, res }) {
+      {
+        console.log('req.session', req.session);
+        await dispatch('user/getUserInfo');
+      }
       {
         // TODO: 权限处理
         // const { status, data: { menu } } = await app.$axios.get('home/menu');

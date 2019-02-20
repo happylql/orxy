@@ -1,7 +1,7 @@
 import { loginByUsername, logout, getUserInfo } from '../../api/login'
 
 const state = () => ({
-  name: 'Hello',
+  name: '',
   avatar: 'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif',
   introduction: '',
   roles: [] // 权限
@@ -42,15 +42,15 @@ const actions = {
           reject('Verification failed, please login again.');
         }
 
-        if (data.roles && data.roles.length > 0) {
-          commit('SET_ROLES', data.roles);
-        } else {
-          reject('getInfo: roles must be a non-null array!')
-        }
+        // if (data.roles && data.roles.length > 0) {
+        //   commit('SET_ROLES', data.roles);
+        // } else {
+        //   reject('getInfo: roles must be a non-null array!')
+        // }
 
         commit('SET_NAME', data.name);
-        commit('SET_AVATAR', data.avatar);
-        commit('SET_INTRODUCTION', data.introduction);
+        // commit('SET_AVATAR', data.avatar);
+        // commit('SET_INTRODUCTION', data.introduction);
         resolve(res);
       }).catch(err => {
         reject(err);

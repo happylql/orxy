@@ -2,9 +2,12 @@ import axios from 'axios'
 import { Message } from 'element-ui'
 import store from '../store'
 
+const baseURL = 'http://127.0.0.1:3000'
+
 // create an axios instance
 const service = axios.create({
-  baseURL: process.env.BASE_API, // api 的 base_url
+  // baseURL: process.env.BASE_API,
+  baseURL: baseURL,
   timeout: 5000 // request timeout
 })
 
