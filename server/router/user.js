@@ -6,9 +6,10 @@ import Passport from '../utils/passport'
 import Config from "../config"
 import service from '../utils/axios'
 import { CODE, MSG } from '../config/error'
+import consts from '../config/consts'
 
 let router = new Router({
-  prefix: '/user'
+  prefix: `${consts.BASE_API}/user`
 });
 
 let Store = new Redis().client;

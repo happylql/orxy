@@ -18,7 +18,7 @@ const store = () => new Vuex.Store({
   actions: {
     async nuxtServerInit({ commit, dispatch }, { req, res }) {
       {
-        console.log('req.session', req.session);
+        // console.log('req.session', req.session);
         await dispatch('user/getUserInfo');
       }
       {

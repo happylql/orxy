@@ -68,7 +68,7 @@ module.exports = {
   */
   build: {
     transpile: [/^element-ui/],
-    vendor: ['vue-i18n'],
+    // vendor: ['vue-i18n'],
 
     /*
     ** You can extend webpack config here
