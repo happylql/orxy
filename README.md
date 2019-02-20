@@ -1,4 +1,4 @@
-# gm-app
+# orxy
 
 > A platform for managing games.
 
