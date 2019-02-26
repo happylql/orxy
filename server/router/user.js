@@ -5,8 +5,11 @@ import User from '../models/user'
 import Passport from '../utils/passport'
 import Config from "../config"
 import service from '../utils/axios'
-import { CODE, MSG } from '../config/error'
 import consts from '../config/consts'
+
+const ERROR = require('../config/error')
+
+const { CODE, MSG } = require('../config/error')
 
 let router = new Router({
   prefix: `${consts.BASE_API}/user`

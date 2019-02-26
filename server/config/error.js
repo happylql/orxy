@@ -20,7 +20,7 @@ const MSG = {
   ERR_USER_REGISTER_FAIL: '用户名注册失败'
 }
 
-export default {
+export {
   CODE,
   MSG
 }

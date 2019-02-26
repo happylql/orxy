@@ -1,4 +1,4 @@
-import { loginByUsername, logout, getUserInfo } from '../../api/login'
+import { loginByUsername, logout, getUserInfo, register, sendCode } from '../../api/user'
 
 const state = () => ({
   name: '',
@@ -26,6 +26,7 @@ const actions = {
     return new Promise((resolve, reject) => {
       this.$axios(loginByUsername(username, userInfo.password)).then(res => {
         const data = res.data;
+        commit('SET_NAME', data.user.username);
         resolve();
       }).catch(err => {
         reject(err)
@@ -73,7 +74,7 @@ const actions = {
   // 动态修改权限
   changeRoles({ commit, dispatch }, role) {
     return new Promise(resolve => {
-      getUserInfo().then(res => {
+      this.$axios(getUserInfo()).then(res => {
         const data = res.data;
         commit('SET_ROLES', data.roles);
         commit('SET_NAME', data.name);
@@ -83,6 +84,28 @@ const actions = {
         dispatch('promission/generateRoutes', data)
         resolve();
       })
+    });
+  },
+
+  register({ commit }, userInfo) {
+    const username = userInfo.username.trim();
+    return new Promise((resolve, reject) => {
+      this.$axios(register(username, userInfo.password, userInfo.email, userInfo.code)).then(() => {
+        resolve();
+      }).catch(err => {
+        reject(err);
+      });
+    });
+  },
+
+  sendCode({ commit }, userInfo) {
+    const username = userInfo.username.trim();
+    return new Promise((resolve, reject) => {
+      this.$axios(sendCode(username, userInfo.email)).then(() => {
+        resolve();
+      }).catch(err => {
+        reject(err);
+      });
     });
   }
 }

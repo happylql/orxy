@@ -31,7 +31,6 @@ export default {
       return this.$store.state.app.device;
     },
     classObj() {
-      debugger;
       return {
         hideSidebar: !this.sidebar.opened,
         openSidebar: this.sidebar.opened,

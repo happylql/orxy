@@ -47,5 +47,9 @@
     "sass-loader": "^7.1.0",
     "scss-loader": "^0.0.1",
     "svg-sprite-loader": "3.8.0"
+  },
+  "engines": {
+    "node": ">=8.0.0",
+    "npm": ">=5.0.0"
   }
 }

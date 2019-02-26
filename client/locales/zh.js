@@ -82,6 +82,14 @@ export default {
     thirdparty: '第三方登录',
     thirdpartyTips: '本地不能模拟，请结合自己业务进行模拟！！！'
   },
+  register: {
+    signup: '注册',
+    email: '邮箱',
+    code: '验证码',
+    cpassword: '确认密码',
+    diffpassword: '两次输入密码不一致',
+    sendCode: '发送验证码'
+  },
   documentation: {
     documentation: '文档',
     github: 'Github 地址'
