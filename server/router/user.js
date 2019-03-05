@@ -1,21 +1,19 @@
-import Router from 'koa-router'
-import Redis from 'koa-redis'
-import nodeMailer from 'nodemailer'
-import User from '../models/user'
-import Passport from '../utils/passport'
-import Config from "../config"
-import service from '../utils/axios'
-import consts from '../config/consts'
+const Router = require('koa-router')
+const Redis = require('koa-redis')
+const nodeMailer = require('nodemailer')
+const User = require('../models/user')
+const Passport = require('../utils/passport')
+const Config = require("../config")
+const service = require('../utils/axios')
+const Consts = require('../options/consts')
+const ERROR = require('../options/error')
+const { CODE, MSG } = require('../options/error')
 
-const ERROR = require('../config/error')
-
-const { CODE, MSG } = require('../config/error')
-
-let router = new Router({
-  prefix: `${consts.BASE_API}/user`
+const router = new Router({
+  prefix: `${Consts.BASE_API}/user`
 });
 
-let Store = new Redis().client;
+const Store = new Redis().client;
 
 /**
  * 注册
@@ -194,4 +192,4 @@ router.get('/info', async (ctx) => {
   }
 })
 
-export default router;
+module.exports = router.routes();

@@ -1,0 +1,49 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Orxy Dev",
+      "type": "node",
+      "request": "launch",
+      "protocol": "inspector",
+      "program": "${workspaceRoot}/server/index",
+      "stopOnEntry": false,
+      "sourceMaps": true,
+      "env": {
+        "NODE_ENV": "development",
+        "DEBUG": "nuxt:*"
+      }
+    },
+    {
+      "name": "Test Cases",
+      "type": "node",
+      "request": "launch",
+      "protocol": "inspector",
+      "program": "${workspaceRoot}/node_modules/ava/profile.js",
+      "stopOnEntry": false,
+      "args": [
+        "test/index.test.js"
+      ],
+      "cwd": "${workspaceRoot}",
+      "sourceMaps": true,
+      "env": {
+        "NODE_ENV": "production",
+        "DEBUG": "nuxt:*"
+      }
+    },
+    {
+      "name": "Orxy Prod",
+      "type": "node",
+      "request": "launch",
+      "protocol": "inspector",
+      "program": "${workspaceRoot}/dist/server/index",
+      "env": {
+        "NODE_ENV": "production",
+        "DEBUG": "nuxt:*"
+      }
+    }
+  ]
+}

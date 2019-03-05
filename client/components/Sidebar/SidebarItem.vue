@@ -50,8 +50,8 @@
 
 <script>
 import path from "path";
-import { generateTitle } from "@/utils/i18n";
-import { isExternal } from "@/utils";
+import { generateTitle } from "~/utils/i18n";
+import { isExternal } from "~/utils";
 import Item from "./Item";
 import AppLink from "./Link";
 

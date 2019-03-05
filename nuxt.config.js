@@ -47,7 +47,18 @@ module.exports = {
     '~/plugins/element-ui',
     '~/plugins/i18n.js',
     '~/plugins/svg-icon',
-    '~/plugins/axios'
+    {
+      src: '~/plugins/axios',
+      ssr: false
+    },
+    {
+      src: '~/plugins/waves',
+      ssr: false
+    },
+    {
+      src: '~/plugins/filters.js',
+      ssr: false
+    }
   ],
 
   /*

@@ -22,7 +22,10 @@
         <el-button size="mini" round @click="sendCode">{{$t('register.sendCode')}}</el-button>
         <span class="status">{{statusMsg}}</span>
       </el-form-item>
-      <el-form-item prop="code" :label="$t('register.code')">
+      <el-form-item prop="code">
+        <span class="svg-container">
+          <svg-icon icon-class="code"/>
+        </span>
         <el-input v-model="registerForm.code" maxlength="4"/>>
       </el-form-item>
       <el-form-item prop="password">

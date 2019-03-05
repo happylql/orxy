@@ -165,5 +165,25 @@ export default {
     close: '关闭',
     closeOthers: '关闭其它',
     closeAll: '关闭所有'
+  },
+
+
+  information: {
+    playerId: '玩家ID',
+    nickname: '玩家昵称',
+    serverId: '区服ID',
+    serverName: '区服名称',
+    registerDate: '注册时间',
+    sealAccount: '封号',
+    sealAccountTag: '已封号',
+    normal: '正常',
+    unsealAccount: '解封',
+    forbidChat: '禁言',
+    forbidChatTag: '已禁言',
+    allowChat: '解禁',
+    sendEmail: '发邮件',
+    channelId: '渠道ID',
+    channelName: '渠道名称',
+    channelAccount: '渠道账号'
   }
 }

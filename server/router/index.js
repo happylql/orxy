@@ -1,8 +1,9 @@
-import Koa from 'koa'
-import consts from '../config/consts'
-import xmlify from 'xmlify'
-import yaml from 'js-yaml'
-import user from './user'
+const Koa = require('koa')
+const consts = require('../options/consts')
+const xmlify = require('xmlify')
+const yaml = require('js-yaml')
+const user = require('./user')
+const information = require('./information')
 
 const app = new Koa();
 // content negotiation: api will respond with json, xml, or yaml
@@ -76,6 +77,7 @@ app.use(async function handleErrors(ctx, next) {
 
 
 // ------------ routing ----------------------
-app.use(user.routes()).use(user.allowedMethods());
+app.use(user);
+app.use(information);
 
-export default app;
+module.exports = app;

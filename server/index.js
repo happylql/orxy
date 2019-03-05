@@ -1,19 +1,19 @@
-import Koa from 'koa'
-import consola from 'consola'
+const Koa = require('koa')
+const consola = require('consola')
 const { Nuxt, Builder } = require('nuxt')
 
-import mongoose from 'mongoose'
-import body from 'koa-body'
-import session from 'koa-generic-session'
-import Redis from 'koa-redis'
-import serverConfig from './config'
-import nuxtConfig from '../nuxt.config.js'
-import Passport from './utils/passport'
-import consts from './config/consts'
-import KoaConnect from 'koa-connect'
-import KoaCompress from 'koa-compress'
-import compose from 'koa-compose'
-import router from './router'
+const mongoose = require('mongoose')
+const body = require('koa-body')
+const session = require('koa-generic-session')
+const Redis = require('koa-redis')
+const serverConfig = require('./config')
+const nuxtConfig = require('../nuxt.config.js')
+const Passport = require('./utils/passport')
+const consts = require('./options/consts')
+const KoaConnect = require('koa-connect')
+const KoaCompress = require('koa-compress')
+const compose = require('koa-compose')
+const router = require('./router')
 
 async function start() {
   const host = consts.HOST;

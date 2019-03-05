@@ -165,5 +165,24 @@ export default {
     close: 'Close',
     closeOthers: 'Close Others',
     closeAll: 'Close All'
+  },
+
+  information: {
+    playerId: 'Player ID',
+    nickname: 'Nickname',
+    serverId: 'Server ID',
+    serverName: 'Server Name',
+    registerDate: 'Register Date',
+    sealAccount: 'Seal Account',
+    sealAccountTag: 'NO PLAY',
+    normal: 'Normal',
+    unsealAccount: 'Unseal Account',
+    forbidChat: 'Forbid Chat',
+    forbidChatTag: 'NO CHAT',
+    allowChat: 'Allow Chat',
+    sendEmail: 'Email',
+    channelId: 'Channel ID',
+    channelName: 'Channel Name',
+    channelAccount: 'Channel Account'
   }
 }

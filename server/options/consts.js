@@ -9,7 +9,7 @@ const HOST = process.env.HOST || '0.0.0.0';
 const PORT = process.env.PORT || '3000';
 const LB_ADDR = process.env.LB_ADDR || `http://${HOST}:${PORT}/${API}`;
 
-export default Object.freeze({
+module.exports = Object.freeze({
   APP,
   API,
   BASE_API,
