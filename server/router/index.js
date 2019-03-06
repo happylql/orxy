@@ -65,7 +65,7 @@ app.use(async function handleErrors(ctx, next) {
       case 500: // Internal Server Error (for uncaught or programming errors)
         console.error(ctx.status, e.message)
         ctx.body = {
-          root: 'error'
+          root: 'error',
           // ...e
         }
         if (app.env !== 'production') ctx.body.stack = e.stack

@@ -9,6 +9,13 @@ module.exports = {
   dev: (process.env.NODE_ENV !== 'production'),
 
   /*
+  ** Router config
+  */
+  router: {
+    middleware: 'i18n'
+  },
+
+  /*
   ** Headers of the page
   */
   head: {
@@ -24,64 +31,16 @@ module.exports = {
   },
 
   /*
-  ** Customize the progress-bar color
-  */
-  loading: { color: 'cyan' },
-
-  router: {
-    middleware: 'i18n'
-  },
-
-  /*
-  ** Global CSS
-  */
-  css: [
-    'element-ui/lib/theme-chalk/index.css',
-    { src: '~/assets/styles/main.scss', lang: 'scss' }
-  ],
-
-  /*
-  ** Plugins to load before mounting the App
-  */
-  plugins: [
-    '~/plugins/element-ui',
-    '~/plugins/i18n.js',
-    '~/plugins/svg-icon',
-    {
-      src: '~/plugins/axios',
-      ssr: false
-    },
-    {
-      src: '~/plugins/waves',
-      ssr: false
-    },
-    {
-      src: '~/plugins/filters.js',
-      ssr: false
-    }
-  ],
-
-  /*
-  ** Nuxt.js modules
-  */
-  modules: [
-    // Doc: https://axios.nuxtjs.org/usage
-    '@nuxtjs/axios'
-  ],
-  /*
-  ** Axios module configuration
-  */
-  axios: {
-    // See https://github.com/nuxt-community/axios-module#options
-  },
-
-  /*
-  ** Build configuration
-  */
+   ** Build configuration
+   */
   build: {
-    transpile: [/^element-ui/],
-    // vendor: ['vue-i18n'],
-
+    publicPath: '/orxy/',
+    // transpile: [/^element-ui/],
+    vendor: [
+      'axios',
+      'element-ui',
+      'vue-i18n',
+    ],
     /*
     ** You can extend webpack config here
     */
@@ -98,10 +57,86 @@ module.exports = {
           symbolId: 'icon-[name]'
         }
       })
+    },
+    extractCSS: true,
+    filenames: {
+      vendor: 'vendor.[hash:12].js',
+      // app: 'orxy.[chunkhash:12].js',
+      // css: 'orxy.[contenthash:12].css'
     }
   },
 
+  /*
+  ** Customize the progress-bar color
+  */
+  loading: { color: 'cyan' },
+
+  /*
+  ** Generate config
+  */
   generate: {
-    routes: ['/', '/zh']
+    routes: ['/', '/login', '/en', '/en/login']
+  },
+
+  /*
+  ** Global CSS
+  */
+  css: [
+    'element-ui/lib/theme-chalk/index.css',
+    { src: '~/assets/styles/main.scss', lang: 'scss' }
+  ],
+
+  /*
+  ** Plugins to load before mounting the App
+  */
+  plugins: [
+    '~/plugins/i18n.js',
+    '~/plugins/element-ui',
+    '~/plugins/svg-icon',
+    {
+      src: '~/plugins/axios',
+      ssr: false
+    },
+    {
+      src: '~/plugins/waves',
+      ssr: false
+    },
+    {
+      src: '~/plugins/filters.js',
+      ssr: false
+    },
+    {
+      src: '~/plugins/error-handler',
+      ssr: false
+    }
+  ],
+
+  /*
+  ** Nuxt.js modules
+  */
+  modules: [
+    // Doc: https://axios.nuxtjs.org/usage
+    '@nuxtjs/axios'
+  ],
+
+  /*
+  ** Axios module configuration
+  */
+  axios: {
+    // See https://github.com/nuxt-community/axios-module#options
+  },
+
+  // koa-proxies for dev, options reference https://github.com/nodejitsu/node-http-proxy#options
+  development: {
+    proxies: [
+      /* {
+        path: '/api/',
+        target: 'http://localhost:3000/',
+        logs: true,
+        prependPath: false,
+        changeOrigin: true,
+        rewrite: path => path.replace(/^\/pages(\/|\/\w+)?$/, '/service')
+      } */
+    ]
   }
 }

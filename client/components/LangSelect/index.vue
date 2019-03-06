@@ -14,17 +14,25 @@
 export default {
   computed: {
     language() {
-      return this.$store.getters.language;
+      return this.$store.getters.locale;
     }
   },
   methods: {
     handleSetLanguage(lang) {
-      this.$i18n.locale = lang;
-      this.$store.dispatch("app/setLanguage", lang);
-      this.$message({
-        message: "Switch Language Success",
-        type: "success"
-      });
+      // 重定向以更新国际化显示
+      const fullPath = this.$route.fullPath;
+      const locale = this.$store.getters.locale;
+      let pathname = "/" + lang + fullPath;
+      if (fullPath.indexOf("/" + locale) === 0) {
+        const re = new RegExp("^/" + locale);
+        pathname = fullPath.replace(re, "/" + lang);
+      }
+      // this.$store.dispatch("app/setLanguage", lang);
+      // this.$message({
+      //   message: "Switch Language Success",
+      //   type: "success"
+      // });
+      location.href = location.origin + pathname;
     }
   }
 };

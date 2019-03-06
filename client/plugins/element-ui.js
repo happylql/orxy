@@ -1,7 +1,10 @@
 import Vue from 'vue'
 import Element from 'element-ui'
-import locale from 'element-ui/lib/locale/lang/en'
+import elementEnLocale from 'element-ui/lib/locale/lang/en'
+import elementZhLocale from 'element-ui/lib/locale/lang/zh-CN'
 
-export default () => {
+// After plugin: i18n.js
+export default ({ store: { state } }) => {
+  const locale = state.app.locale === 'en' ? elementEnLocale : elementZhLocale
   Vue.use(Element, { locale })
 }

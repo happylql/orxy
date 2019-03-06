@@ -1,5 +1,8 @@
 export default {
   route: {
+    information: 'Information',
+    playerInformation: 'Player Information',
+
     dashboard: 'Dashboard',
     introduction: 'Introduction',
     documentation: 'Documentation',

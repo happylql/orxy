@@ -55,7 +55,7 @@ router.post('/signup', async (ctx) => {
 
   let newer = await User.create({ username, password, email });
   if (newer) {
-    let res = await service.post('/user/signin', { username, password });
+    let res = await service.post(`${Consts.BASE_API}/user/signin`, { username, password });
     if (res.data && res.data.code === CODE.SUCCESS) {
       ctx.body = {
         code: CODE.SUCCESS,

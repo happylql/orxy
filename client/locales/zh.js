@@ -1,5 +1,8 @@
 export default {
   route: {
+    information: '信息处理',
+    playerInformation: '玩家信息',
+
     dashboard: '首页',
     introduction: '简述',
     documentation: '文档',

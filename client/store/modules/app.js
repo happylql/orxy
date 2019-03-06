@@ -3,7 +3,7 @@ import Cookies from 'js-cookie'
 const state = () => ({
   device: 'desktop',
   locales: ['en', 'zh'],
-  locale: Cookies.get('language') || 'en',
+  locale: 'zh',
   sidebar: {
     opened: Cookies.get('sidebarStatus') ? !!+Cookies.get('sidebarStatus') : true,
     withoutAnimation: false
@@ -33,7 +33,6 @@ const mutations = {
   SET_LANGUAGE: (state, locale) => {
     if (state.locales.indexOf(locale) !== -1) {
       state.locale = locale;
-      Cookies.set('language', locale);
     }
   }
 }

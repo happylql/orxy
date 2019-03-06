@@ -1,25 +1,15 @@
 export const asyncRouterMap = [
-  // {
-  //   path: '/permission',
-  //   alwaysShow: true, // will always show the root menu
-  //   meta: {
-  //     title: 'permission',
-  //     icon: 'lock',
-  //     roles: ['admin', 'editor'] // you can set roles in root nav
-  //   },
-  //   children: [
-  //     {
-  //       path: '/permission/page',
-  //       name: 'PagePermission',
-  //       meta: {
-  //         title: 'pagePermission',
-  //         roles: ['admin'] // or you can only set roles in sub nav
-  //       }
-  //     }
-  //   ]
-  // },
+  {
+    path: '/',
+    meta: {
+      title: 'dashboard',
+      icon: 'excel',
+      roles: ['admin']
+    }
+  },
   {
     path: '/information',
+    alwaysShow: true,
     meta: {
       title: 'information',
       icon: 'excel',
@@ -30,7 +20,7 @@ export const asyncRouterMap = [
         path: '/information/player',
         name: 'PlayerInformation',
         meta: {
-          title: 'PlayerInformation',
+          title: 'playerInformation',
           roles: ['admin']
         }
       }
